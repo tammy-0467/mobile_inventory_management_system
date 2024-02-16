@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:untitled/custom_styles/page_route_animation.dart';
 import 'package:untitled/on_boarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,8 +22,9 @@ class _SplashScreenState extends State<SplashScreen>
 
     //Navigate to the next screen and prevent the user from coming back to the splash screen
     Future.delayed(Duration(milliseconds: 3500), (){
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (_)=> onBoardingScreen()
+      Navigator.of(context).pushReplacement(
+        //call the on boarding screen through the animation screen
+          BouncyPageRoute(widget: onBoardingScreen()
       ));
     }
     );

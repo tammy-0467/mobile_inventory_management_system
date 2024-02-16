@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:untitled/authentication_screens/widget_tree.dart';
 import 'package:untitled/home_screen.dart';
 import 'package:untitled/intro_screens/intro_page_1.dart';
 import 'package:untitled/intro_screens/intro_page_2.dart';
-import 'package:untitled/login_screen.dart';
+import 'package:untitled/authentication_screens/login_screen.dart';
 
 class onBoardingScreen extends StatefulWidget {
   const onBoardingScreen({super.key});
@@ -13,7 +14,7 @@ class onBoardingScreen extends StatefulWidget {
 }
 
 class _onBoardingScreenState extends State<onBoardingScreen> {
-  //keep track of page
+  //keep track of the last page
   bool onLastPage = false;
 
   // controller to keep track of pages
@@ -22,6 +23,7 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // use a stack to keep the elements on top of each other
       body: Stack(alignment: Alignment.center, children: [
         PageView(
           controller: _controller,
@@ -31,12 +33,13 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
             });
           },
           children: [
+            //call the pages to be wrapped within the pageview
             IntroPage1(),
             IntroPage2(),
           ],
-        ),
-        //page indicator
+        ), //page indicator
 
+        // still within the stack widget
         Container(
             alignment: Alignment(0, 0.75),
             child: Row(
@@ -56,16 +59,12 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
                     ? TextButton(
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (_) => HomePage()));
+                              MaterialPageRoute(builder: (_) => WidgetTree()));
                         },
                         child: Text("Done"))
                     : TextButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginPage()),
-                          );
+                          _controller.nextPage(duration: Durations.long1, curve: Curves.easeIn);
                           // Remove the _controller.nextPage() call from here
                         },
                         child: Text("Next"),
