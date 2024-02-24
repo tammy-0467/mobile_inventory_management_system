@@ -4,6 +4,7 @@ import 'package:untitled/custom_styles/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:untitled/custom_styles/my_box.dart';
+import 'package:untitled/settings_screen.dart';
 import 'package:untitled/tab_bar_screens/barcode_scan_screen.dart';
 import 'package:untitled/tab_bar_screens/dashboard.dart';
 import 'package:untitled/tab_bar_screens/inventory_items.dart';
@@ -26,12 +27,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _title(){
-    return Text('Welcome', style: appTheme.textTheme.headlineMedium,);
+    return Text('Welcome', style: lightAppTheme.textTheme.headlineMedium,);
   }
 
   Widget _userUid(){
     //I'm assuming if the mail is null it displays user email
-    return Text(user?.email ?? 'User email', style: appTheme.textTheme.bodyLarge,);
+    return Text(user?.email ?? 'User email', style: lightAppTheme.textTheme.bodyLarge,);
   }
 
   //a sign out button that calls the sign out function when called
@@ -49,7 +50,7 @@ class _HomePageState extends State<HomePage> {
     const DashboardScreen(),
     NotificationPage(),
     BarcodeScreen(),
-    InventoryScreen()
+    SettingPage()
   ];
 
   @override
@@ -57,14 +58,24 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement build
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             //the appbar calls two functions which displays the welcome text and their email below it
             children: [
               _title(),
               _userUid()
             ],
           ),
+          actions: [
+            IconButton(
+                onPressed: (){
+                  showSearch(context: context,
+                      delegate: CustomSearchDelegate());
+                },
+                icon: Icon(Icons.search_outlined))
+          ],
         ),
         drawer: MyDrawer(),
 
@@ -80,7 +91,7 @@ class _HomePageState extends State<HomePage> {
               backgroundColor: Colors.white,
               color: Colors.grey,
               hoverColor: Colors.grey,
-              activeColor: appTheme.primaryColor,
+              activeColor: lightAppTheme.primaryColor,
               tabBackgroundColor: Colors.black,
               gap: 10,
               padding: EdgeInsets.all(15),
@@ -98,8 +109,8 @@ class _HomePageState extends State<HomePage> {
                   text: 'Scan barcode',
                 ),
                 GButton(
-                  icon: Icons.list_outlined,
-                  text: 'Inventory',
+                  icon: Icons.settings_outlined,
+                  text: 'Settings',
                 ),
               ],
               //assign the value of the selected index of the nav bar to the selected index variable

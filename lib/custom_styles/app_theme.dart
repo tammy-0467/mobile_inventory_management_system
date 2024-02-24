@@ -5,12 +5,15 @@ import 'package:google_fonts/google_fonts.dart';
 Color COLOR_PRIMARY = Colors.lightBlue;
 Color COLOR_ACCENT = Colors.blueGrey.shade700;
 
-ThemeData appTheme = ThemeData(
+ThemeData lightAppTheme = ThemeData(
+    brightness: Brightness.light,
     primaryColor: COLOR_PRIMARY,
     scaffoldBackgroundColor: Colors.white,
     textSelectionTheme: TextSelectionThemeData(
       //changing the cursor indicator within text fields
-        cursorColor: COLOR_ACCENT
+        cursorColor: COLOR_ACCENT,
+        selectionColor: COLOR_ACCENT,
+        selectionHandleColor: COLOR_ACCENT,
     ),
 
     //Varying text styles for different situations
@@ -100,4 +103,9 @@ ThemeData appTheme = ThemeData(
         fillColor: Colors.grey.shade500.withOpacity(0.1),
         activeIndicatorBorder: BorderSide(color: COLOR_PRIMARY, width: 2)
     )
+);
+
+
+ThemeData darkAppTheme = ThemeData(
+  brightness: Brightness.dark,
 );

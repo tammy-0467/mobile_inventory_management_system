@@ -13,15 +13,14 @@ class NotificationPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
            Align(
-            alignment: Alignment.topLeft,
               child: Text("Notifications",
-                style: appTheme.textTheme.headlineMedium,)
+                style: lightAppTheme.textTheme.headlineMedium,)
            ),
           Expanded(
               child: ListView.builder(
                   itemCount: 10,
                   itemBuilder: (context, index){
-                    return MyTile();
+                    return NotificationTile();
                   }))
         ],
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/custom_styles/app_theme.dart';
+import 'package:untitled/inventory_screens/manual_data_entry.dart';
 
 class BarcodeScreen extends StatelessWidget {
   const BarcodeScreen({super.key});
@@ -15,7 +16,7 @@ class BarcodeScreen extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Text("Scan QR code", style: appTheme.textTheme.headlineMedium,),
+              child: Text("Scan QR code", style: lightAppTheme.textTheme.headlineMedium,),
             ),
             Container(
               height: 150,
@@ -28,11 +29,13 @@ class BarcodeScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Can't scan barcode? ", style: appTheme.textTheme.bodyLarge,),
+                  Text("Can't scan barcode? ", style: lightAppTheme.textTheme.bodyLarge,),
                  /* Padding(padding: EdgeInsets.symmetric(horizontal: 5)),*/
                   TextButton(
-                      onPressed: (){},
-                      child: Text("Click here", style: appTheme.textTheme.bodyLarge,))
+                      onPressed: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_)=> ManualEntryScreen()));
+                      },
+                      child: Text("Click here", style: lightAppTheme.textTheme.bodyLarge,))
                 ],
               ),
             )

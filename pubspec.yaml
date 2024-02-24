@@ -43,6 +43,11 @@ dependencies:
   firebase_core: ^2.25.4
   firebase_auth: ^4.17.4
   google_nav_bar: ^5.0.6
+  provider: ^6.1.1
+  input_quantity: ^2.2.0
+  wc_form_validators: 1.0.1
+  email_validator:
+  fluttertoast: ^8.2.4
 
 dev_dependencies:
   flutter_test:
