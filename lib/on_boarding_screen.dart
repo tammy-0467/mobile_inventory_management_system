@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:untitled/authentication_screens/widget_tree.dart';
+import 'package:untitled/custom_styles/app_theme.dart';
 import 'package:untitled/home_screen.dart';
 import 'package:untitled/intro_screens/intro_page_1.dart';
 import 'package:untitled/intro_screens/intro_page_2.dart';
 import 'package:untitled/authentication_screens/login_screen.dart';
+import 'package:untitled/intro_screens/intro_page_3.dart';
 
 class onBoardingScreen extends StatefulWidget {
   const onBoardingScreen({super.key});
@@ -29,13 +31,14 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
           controller: _controller,
           onPageChanged: (index) {
             setState(() {
-              onLastPage = (index == 1);
+              onLastPage = (index == 2);
             });
           },
           children: [
             //call the pages to be wrapped within the pageview
             IntroPage1(),
             IntroPage2(),
+            IntroPage3()
           ],
         ), //page indicator
 
@@ -48,11 +51,17 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
                 //skip button
                 TextButton(
                     onPressed: () {
-                      _controller.jumpToPage(1);
+                      _controller.jumpToPage(2);
                     },
                     child: Text("Skip")),
                 //page indicator
-                SmoothPageIndicator(controller: _controller, count: 2),
+                SmoothPageIndicator(
+                    controller: _controller,
+                    count: 3,
+                  effect: SlideEffect(
+                    activeDotColor: lightAppTheme.primaryColor
+                  ),
+                ),
 
                 //next button
                 onLastPage

@@ -55,8 +55,7 @@ class _ManualEntryScreenState extends State<ManualEntryScreen> {
           int priceOfUnit = int.parse(_unitPriceController.text);
           String itemDesc = _detailsputController.text;
 
-          //reset the forms when navigation is complete
-          formKey.currentState?.reset();
+
           // Add inventory items to Firestore
           DocumentReference docRef = await addInventoryItems(itemName, noOfUnits, priceOfUnit, itemDesc);
 
@@ -66,6 +65,8 @@ class _ManualEntryScreenState extends State<ManualEntryScreen> {
           //pass the variable information from this screen to the product details screen
           ProductInfoScreen(itemName: itemName, itemDesc: itemDesc, noOfUnits: noOfUnits, priceOfUnit: priceOfUnit, documentID: documentID,)
           ));
+          //reset the forms when navigation is complete
+          formKey.currentState?.reset();
         }
       },
 

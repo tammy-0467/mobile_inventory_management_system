@@ -48,7 +48,7 @@ ThemeData lightAppTheme = ThemeData(
     textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
           padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-              EdgeInsets.symmetric(horizontal: 10, vertical: 10)
+              EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           ),
           //defining the shape(curved edges) of the text button
           shape: MaterialStateProperty.all<OutlinedBorder>(
@@ -57,6 +57,7 @@ ThemeData lightAppTheme = ThemeData(
               )
           ),
           foregroundColor: MaterialStateProperty.all<Color>(COLOR_ACCENT),
+          overlayColor: MaterialStateColor.resolveWith((states) => Colors.lightBlue.shade100)
         )
     ),
 

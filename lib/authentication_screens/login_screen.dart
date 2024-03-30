@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:untitled/custom_styles/app_theme.dart';
 
 import 'package:untitled/home_screen.dart';
+import 'package:untitled/tab_bar_screens/dashboard.dart';
 import 'package:wc_form_validators/wc_form_validators.dart';
 
 class LoginPage extends StatefulWidget {
@@ -93,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
       );
 
       // Navigate to another screen upon successful login
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DashboardScreen()));
     } on FirebaseAuthException catch (e) {
       // Handle sign-in errors
       Fluttertoast.showToast(
@@ -122,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
       );
 
       // Navigate to another screen upon successful registration
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DashboardScreen()));
     } on FirebaseAuthException catch (e) {
       // Handle registration errors
         Fluttertoast.showToast(
@@ -141,9 +142,6 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
-  Widget _errorMessage(){
-    return Text(errorMessage == '' ? '' : 'Hmm ? $errorMessage');
-  }
 
   //a text field widget fn that requires a controller and title
   Widget _emailField(String title,

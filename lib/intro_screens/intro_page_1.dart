@@ -15,7 +15,7 @@ class IntroPage1 extends StatelessWidget {
           child: SizedBox(
             height: 160,
             width: 160,
-            child: Image.asset("assets/images/qr.png"),
+            child: Image.asset("assets/images/9185604.png"),
           ),
         ),
          Padding(

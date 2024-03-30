@@ -32,7 +32,7 @@ class IntroPage2 extends StatelessWidget {
         ),
          Padding(
           padding: EdgeInsets.only(top: 1),
-          child: Text("get alerts when stock is",
+          child: Text("be aware when stock is",
               style: GoogleFonts.mulish(color: Colors.grey, fontWeight: FontWeight.bold)
           ),
         ),
